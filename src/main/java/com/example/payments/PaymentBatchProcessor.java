@@ -1,10 +1,27 @@
 package com.example.payments;
 
+import java.util.List;
+
 /**
  * Processes payments concurrently to demonstrate debugger thread inspection.
  */
 public class PaymentBatchProcessor {
     private double approvedTotal = 0;
+
+    /**
+     * Returns the sum of approved transaction totals in the supplied receipts.
+     */
+    public double totalApprovedTransactions(List<PaymentReceipt> receipts) {
+        double runningTotal = 0;
+        double amountToAdd = 0;
+        for (PaymentReceipt receipt : receipts) {
+            if ("APPROVED".equals(receipt.status())) {
+                amountToAdd = receipt.total();
+            }
+            runningTotal += amountToAdd;
+        }
+        return runningTotal;
+    }
 
     /**
      * Processes two payments on named worker threads and returns the approved total.
