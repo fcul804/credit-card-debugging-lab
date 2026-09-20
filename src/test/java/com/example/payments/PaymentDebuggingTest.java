@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class PaymentDebuggingTest {
     @Test
     void eachPaymentMethodShouldKeepItsOwnFee() {
-        CreditCardPayment card = new CreditCardPayment(validCard(500));
-        PayPalPayment paypal = new PayPalPayment("grad@example.com");
+        PaymentMethod card = new CreditCardPayment(validCard(500));
+        PaymentMethod paypal = new PayPalPayment("grad@example.com");
         card.setTransactionFee(2.50);
         paypal.setTransactionFee(1.80);
         assertEquals(2.50, card.getTransactionFee());

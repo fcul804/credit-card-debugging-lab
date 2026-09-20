@@ -24,6 +24,7 @@ public class PaymentBatchProcessor {
      * Adds an approved receipt to the running total. Intentionally unsafe for the lab.
      */
     private void addIfApproved(PaymentReceipt receipt) {
-        if (receipt.status().equals("APPROVED")) approvedTotal += receipt.total(); // BUG 4: race condition
+        if (receipt.status().equals("APPROVED")) approvedTotal += receipt.total();
     }
+
 }
